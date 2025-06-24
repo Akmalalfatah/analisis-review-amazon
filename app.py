@@ -1,13 +1,13 @@
 import streamlit as st
-from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
 MODEL_ID = "Akmalalfatah/analisis-review-amazon"
 
 @st.cache_resource
 def load_model():
-    tokenizer = DistilBertTokenizer.from_pretrained(MODEL_ID)
-    model = DistilBertForSequenceClassification.from_pretrained(MODEL_ID)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
     model.eval()
     return tokenizer, model
 
